@@ -19,7 +19,7 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm ci
+        run: npm ci --legacy-peer-deps
 
       - name: Build
         run: npm run build:h5
@@ -29,6 +29,9 @@ jobs:
           cp public/_routes.json dist/_routes.json
           cp public/_redirects dist/_redirects
           cp src/static/qr-code.html dist/qr-code.html
+
+      - name: List dist contents
+        run: ls -la dist/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
@@ -56,3 +59,4 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           projectName: class-helper-2
           directory: dist
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
