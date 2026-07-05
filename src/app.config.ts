@@ -1,6 +1,9 @@
 export default defineAppConfig({
   pages: [
     'pages/login/index',
+    'pages/register/index',
+    'pages/admin-login/index',
+    'pages/admin/index',
     'pages/home/index',
     'pages/schedule/index',
     'pages/attendance/index',
@@ -12,6 +15,7 @@ export default defineAppConfig({
     'pages/reminder-settings/index',
     'pages/data-backup/index',
     'pages/profile/index',
+    'pages/change-password/index',
     'pages/notification-settings/index',
     'pages/privacy-settings/index',
     'pages/about/index'

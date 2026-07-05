@@ -59,6 +59,33 @@
   margin-bottom: $spacing-lg;
 }
 
+.inputGroup {
+  margin-bottom: $spacing-lg;
+}
+
+.inputLabel {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  margin-bottom: $spacing-xs;
+  display: block;
+}
+
+.input {
+  width: 100%;
+  height: 88rpx;
+  background: $color-bg-card;
+  border: 2rpx solid $color-divider;
+  border-radius: $radius-button;
+  padding: 0 $spacing-md;
+  font-size: $font-size-md;
+  color: $color-text-primary;
+  box-sizing: border-box;
+  
+  &.error {
+    border-color: $color-error;
+  }
+}
+
 .loginButton {
   background: linear-gradient(135deg, $color-primary 0%, $color-primary-light 100%);
   color: $color-text-white;
@@ -68,14 +95,16 @@
   font-weight: $font-weight-semibold;
   text-align: center;
   box-shadow: $shadow-card;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: $spacing-sm;
+  margin-top: $spacing-md;
   
   &:active {
     transform: scale(0.98);
     opacity: 0.9;
+  }
+  
+  &.disabled {
+    opacity: 0.7;
+    pointer-events: none;
   }
 }
 
@@ -121,6 +150,52 @@
 
 .privacyLink {
   color: $color-primary;
+}
+
+.errorText {
+  color: $color-error;
+  font-size: $font-size-xs;
+  text-align: center;
+  margin-top: $spacing-sm;
+}
+
+.extraLinks {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: $spacing-lg;
+}
+
+.registerLink {
+  font-size: $font-size-sm;
+  color: $color-primary;
+  
+  &:active {
+    opacity: 0.7;
+  }
+}
+
+.forgotPassword {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+  
+  &:active {
+    opacity: 0.7;
+  }
+}
+
+.adminEntry {
+  text-align: center;
+  margin-top: $spacing-xl;
+}
+
+.adminLink {
+  font-size: $font-size-sm;
+  color: $color-primary;
+  
+  &:active {
+    opacity: 0.7;
+  }
 }
 
 .agreementModal {

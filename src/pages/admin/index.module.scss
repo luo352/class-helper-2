@@ -1,0 +1,286 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  background: $color-bg-page;
+}
+
+.header {
+  background: linear-gradient(135deg, $color-primary 0%, $color-primary-light 100%);
+  padding: $page-padding;
+  padding-top: $page-padding + $spacing-xl;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-semibold;
+  color: $color-text-white;
+}
+
+.logoutButton {
+  width: 64rpx;
+  height: 64rpx;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: $radius-round;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logoutIcon {
+  font-size: $font-size-xl;
+  color: $color-text-white;
+}
+
+.stats {
+  display: flex;
+  padding: $page-padding;
+  gap: $spacing-md;
+  margin-top: -$spacing-lg;
+}
+
+.statItem {
+  flex: 1;
+  background: $color-bg-card;
+  border-radius: $radius-md;
+  padding: $spacing-md;
+  text-align: center;
+  box-shadow: $shadow-card;
+}
+
+.statValue {
+  font-size: $font-size-xxxl;
+  font-weight: $font-weight-bold;
+  color: $color-primary;
+  display: block;
+}
+
+.statLabel {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  margin-top: 8rpx;
+  display: block;
+}
+
+.menu {
+  display: flex;
+  padding: 0 $page-padding;
+  gap: $spacing-sm;
+  margin-bottom: $spacing-md;
+}
+
+.menuItem {
+  flex: 1;
+  background: $color-bg-card;
+  border-radius: $radius-md;
+  padding: $spacing-md;
+  text-align: center;
+  border: 2rpx solid transparent;
+  transition: all 0.2s;
+  
+  &.active {
+    border-color: $color-primary;
+    background: rgba(74, 144, 217, 0.1);
+  }
+  
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.menuIcon {
+  font-size: $font-size-xxl;
+  display: block;
+  margin-bottom: 8rpx;
+}
+
+.menuText {
+  font-size: $font-size-xs;
+  color: $color-text-primary;
+  display: block;
+}
+
+.menuBadge {
+  background: $color-error;
+  border-radius: $radius-round;
+  padding: 4rpx 12rpx;
+  margin-top: 8rpx;
+  display: inline-block;
+}
+
+.badgeText {
+  font-size: $font-size-xs;
+  color: $color-text-white;
+}
+
+.content {
+  padding: 0 $page-padding $page-padding;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $spacing-md;
+}
+
+.sectionTitle {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+}
+
+.sectionAction {
+  font-size: $font-size-sm;
+  color: $color-primary;
+}
+
+.userList {
+  background: $color-bg-card;
+  border-radius: $radius-md;
+  overflow: hidden;
+}
+
+.userItem {
+  display: flex;
+  align-items: center;
+  padding: $spacing-md;
+  border-bottom: 1rpx solid $color-divider;
+  
+  &:last-child {
+    border-bottom: none;
+  }
+  
+  &:active {
+    background: $color-bg-page;
+  }
+}
+
+.userAvatar {
+  width: 80rpx;
+  height: 80rpx;
+  background: $color-primary-light;
+  border-radius: $radius-round;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: $spacing-md;
+}
+
+.avatarText {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-primary;
+}
+
+.userInfo {
+  flex: 1;
+}
+
+.userName {
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+  display: block;
+}
+
+.userClass {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  margin-top: 4rpx;
+  display: block;
+}
+
+.userStatus {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8rpx;
+}
+
+.statusBadge {
+  font-size: $font-size-xs;
+  padding: 4rpx 12rpx;
+  border-radius: $radius-xs;
+}
+
+.statusActive {
+  background: rgba(79, 194, 79, 0.1);
+  color: $color-success;
+}
+
+.statusInactive {
+  background: rgba(255, 149, 0, 0.1);
+  color: $color-warning;
+}
+
+.roleBadge {
+  font-size: $font-size-xs;
+  color: $color-primary;
+}
+
+.emptyState {
+  background: $color-bg-card;
+  border-radius: $radius-md;
+  padding: $spacing-xl;
+  text-align: center;
+}
+
+.emptyIcon {
+  font-size: 120rpx;
+  display: block;
+  margin-bottom: $spacing-md;
+}
+
+.emptyText {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+}
+
+.settingList {
+  background: $color-bg-card;
+  border-radius: $radius-md;
+  overflow: hidden;
+}
+
+.settingItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $spacing-lg;
+  border-bottom: 1rpx solid $color-divider;
+  
+  &:last-child {
+    border-bottom: none;
+  }
+  
+  &:active {
+    background: $color-bg-page;
+  }
+}
+
+.settingText {
+  font-size: $font-size-md;
+  color: $color-text-primary;
+}
+
+.settingValue {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+}
+
+.statusOnline {
+  color: $color-success;
+}
+
+.settingArrow {
+  font-size: $font-size-xl;
+  color: $color-text-tertiary;
+}
+
+.logout {
+  color: $color-error;
+}

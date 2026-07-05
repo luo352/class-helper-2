@@ -1,45 +1,96 @@
-import React, { useState } from 'react'
-import { View, Text } from '@tarojs/components'
+import React, { useState, useEffect } from 'react'
+import { View, Text, Input, Button } from '@tarojs/components'
 import Taro from '@tarojs/taro'
 import styles from './index.module.scss'
-import { doLogin, setUserInfo, setOpenid, isLoggedIn } from '@/utils/auth'
+import { login } from '@/services/user-service'
+import { validateUsername, validatePassword, sanitizeInput } from '@/utils/crypto'
+import { navigateToHome } from '@/utils/auth'
+import { isAuthenticated, getCurrentUser } from '@/services/user-service'
 
 export default function LoginPage() {
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
   const [checked, setChecked] = useState(false)
   const [showAgreement, setShowAgreement] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [errors, setErrors] = useState<Record<string, string>>({})
 
-  React.useEffect(() => {
-    if (isLoggedIn()) {
-      Taro.switchTab({ url: '/pages/home/index' })
+  useEffect(() => {
+    if (isAuthenticated()) {
+      navigateToHome()
     }
   }, [])
 
-  const handleLogin = async () => {
-    if (!checked) {
-      Taro.showToast({ title: '请先同意隐私协议', icon: 'none' })
-      return
+  useEffect(() => {
+    const user = getCurrentUser()
+    if (user) {
+      navigateToHome()
+    }
+  }, [])
+
+  const validateForm = (): boolean => {
+    const newErrors: Record<string, string> = {}
+
+    const usernameResult = validateUsername(username)
+    if (!usernameResult.valid) {
+      newErrors.username = usernameResult.message
     }
 
+    const passwordResult = validatePassword(password)
+    if (!passwordResult.valid) {
+      newErrors.password = passwordResult.message
+    }
+
+    if (!checked) {
+      newErrors.privacy = '请先同意隐私协议'
+    }
+
+    setErrors(newErrors)
+    return Object.keys(newErrors).length === 0
+  }
+
+  const handleLogin = async () => {
+    if (!validateForm()) return
+
+    setLoading(true)
+
     try {
-      setLoading(true)
-      const result = await doLogin()
-      
-      if (result.userInfo) {
-        setUserInfo(result.userInfo)
-        setOpenid(result.openid)
-        
-        Taro.showToast({ title: '登录成功', icon: 'success' })
-        
+      const sanitizedUsername = sanitizeInput(username)
+      const sanitizedPassword = sanitizeInput(password)
+
+      const result = await login(sanitizedUsername, sanitizedPassword)
+
+      if (result.success) {
+        Taro.showToast({ title: result.message, icon: 'success' })
         setTimeout(() => {
-          Taro.switchTab({ url: '/pages/home/index' })
+          navigateToHome()
         }, 1500)
+      } else {
+        setErrors({ ...errors, submit: result.message })
+        Taro.showToast({ title: result.message, icon: 'none' })
       }
     } catch (err) {
       console.error('[LoginPage] handleLogin failed:', err)
+      setErrors({ ...errors, submit: '登录失败，请重试' })
       Taro.showToast({ title: '登录失败，请重试', icon: 'none' })
     } finally {
       setLoading(false)
+    }
+  }
+
+  const handleAdminLogin = () => {
+    if (process.env.TARO_ENV === 'h5') {
+      window.location.href = '/#/pages/admin-login/index'
+    } else {
+      Taro.navigateTo({ url: '/pages/admin-login/index' })
+    }
+  }
+
+  const handleRegister = () => {
+    if (process.env.TARO_ENV === 'h5') {
+      window.location.href = '/#/pages/register/index'
+    } else {
+      Taro.navigateTo({ url: '/pages/register/index' })
     }
   }
 
@@ -55,11 +106,53 @@ export default function LoginPage() {
 
       <View className={styles.content}>
         <View className={styles.loginCard}>
-          <View className={styles.loginButton} onClick={handleLogin} disabled={loading}>
-            <Text className={styles.wxIcon}>👤</Text>
-            <Text>{loading ? '登录中...' : '微信授权登录'}</Text>
+          <View className={styles.inputGroup}>
+            <Text className={styles.inputLabel}>用户名</Text>
+            <Input
+              className={`${styles.input} ${errors.username ? styles.error : ''}`}
+              placeholder="请输入用户名"
+              value={username}
+              onChange={(e) => {
+                setUsername(e.detail.value)
+                if (errors.username) {
+                  setErrors({ ...errors, username: '' })
+                }
+              }}
+              disabled={loading}
+            />
+            {errors.username && (
+              <Text className={styles.errorText}>{errors.username}</Text>
+            )}
           </View>
-          
+
+          <View className={styles.inputGroup}>
+            <Text className={styles.inputLabel}>密码</Text>
+            <Input
+              className={`${styles.input} ${errors.password ? styles.error : ''}`}
+              type="password"
+              placeholder="请输入密码"
+              value={password}
+              onChange={(e) => {
+                setPassword(e.detail.value)
+                if (errors.password) {
+                  setErrors({ ...errors, password: '' })
+                }
+              }}
+              disabled={loading}
+            />
+            {errors.password && (
+              <Text className={styles.errorText}>{errors.password}</Text>
+            )}
+          </View>
+
+          {errors.submit && (
+            <Text className={styles.errorText}>{errors.submit}</Text>
+          )}
+
+          <View className={`${styles.loginButton} ${loading ? styles.disabled : ''}`} onClick={handleLogin}>
+            <Text>{loading ? '登录中...' : '登 录'}</Text>
+          </View>
+
           <View className={styles.privacy}>
             <View className={`${styles.checkbox} ${checked ? styles.checked : ''}`} onClick={() => setChecked(!checked)}></View>
             <Text className={styles.privacyText}>
@@ -69,6 +162,15 @@ export default function LoginPage() {
               <Text className={styles.privacyLink} onClick={() => setShowAgreement(true)}>《隐私政策》</Text>
             </Text>
           </View>
+
+          <View className={styles.extraLinks}>
+            <Text className={styles.registerLink} onClick={handleRegister}>注册账号</Text>
+            <Text className={styles.forgotPassword}>忘记密码？</Text>
+          </View>
+        </View>
+
+        <View className={styles.adminEntry}>
+          <Text className={styles.adminLink} onClick={handleAdminLogin}>👩‍💼 管理员入口</Text>
         </View>
       </View>
 
@@ -91,7 +193,7 @@ export default function LoginPage() {
 
                 2. 用户账号
 
-                用户通过微信授权登录使用本服务。用户应妥善保管自己的微信账号，因账号泄露导致的损失由用户自行承担。
+                用户通过注册账号登录使用本服务。用户应妥善保管自己的账号和密码，因账号泄露导致的损失由用户自行承担。
 
                 3. 使用规范
 
@@ -101,7 +203,7 @@ export default function LoginPage() {
 
                 1. 信息收集
 
-                我们会收集用户的微信昵称、头像等基本信息，用于提供个性化服务。
+                我们会收集用户的账号信息、昵称等基本信息，用于提供个性化服务。
 
                 2. 信息使用
 
@@ -109,7 +211,7 @@ export default function LoginPage() {
 
                 3. 信息保护
 
-                我们采取严格的安全措施保护用户信息，但不保证绝对安全。
+                我们采取严格的安全措施保护用户信息，密码采用加密存储方式。
 
                 三、其他
 
