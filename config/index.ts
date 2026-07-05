@@ -29,6 +29,14 @@ export default defineConfig<'webpack5'>(async (merge, { command, mode }) => {
           from: 'src/static',
           to: 'static',
         },
+        {
+          from: 'public/_routes.json',
+          to: '_routes.json',
+        },
+        {
+          from: 'public/_redirects',
+          to: '_redirects',
+        },
       ],
       options: {},
     },
