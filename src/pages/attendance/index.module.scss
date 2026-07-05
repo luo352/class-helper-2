@@ -1,0 +1,155 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  background: $color-bg-page;
+}
+
+.header {
+  background: linear-gradient(135deg, $color-primary 0%, $color-primary-light 100%);
+  padding: $page-padding;
+  padding-top: $page-padding + $spacing-xl;
+  padding-bottom: $page-padding + $spacing-xl;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-around;
+  color: $color-text-white;
+}
+
+.statItem {
+  text-align: center;
+}
+
+.statValue {
+  font-size: 48rpx;
+  font-weight: $font-weight-bold;
+  display: block;
+  margin-bottom: 8rpx;
+}
+
+.statLabel {
+  font-size: $font-size-sm;
+  opacity: 0.9;
+}
+
+.content {
+  padding: $page-padding;
+}
+
+.tabHeader {
+  display: flex;
+  background: $color-bg-card;
+  border-radius: $radius-md;
+  padding: 4rpx;
+  margin-bottom: $spacing-lg;
+  box-shadow: $shadow-card;
+}
+
+.tabItem {
+  flex: 1;
+  padding: 20rpx;
+  text-align: center;
+  border-radius: $radius-sm;
+  font-size: $font-size-md;
+  color: $color-text-tertiary;
+  transition: all $transition-base;
+  
+  &.active {
+    background: $color-primary;
+    color: $color-text-white;
+    font-weight: $font-weight-medium;
+  }
+}
+
+.attendanceList {
+  .attendanceItem {
+    background: $color-bg-card;
+    border-radius: $radius-md;
+    padding: $spacing-lg;
+    margin-bottom: $spacing-md;
+    box-shadow: $shadow-card;
+  }
+}
+
+.attendanceHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: $spacing-sm;
+}
+
+.courseName {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+}
+
+.typeBadge {
+  font-size: $font-size-xs;
+  padding: 4rpx 16rpx;
+  border-radius: $radius-button;
+  
+  &.checkin {
+    background: rgba($color-success, 0.1);
+    color: $color-success;
+  }
+  
+  &.late {
+    background: rgba($color-warning, 0.1);
+    color: $color-warning;
+  }
+  
+  &.absent {
+    background: rgba($color-error, 0.1);
+    color: $color-error;
+  }
+}
+
+.attendanceTime {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+}
+
+.statusBadge {
+  font-size: $font-size-xs;
+  padding: 4rpx 16rpx;
+  border-radius: $radius-button;
+  
+  &.approved {
+    background: rgba($color-success, 0.1);
+    color: $color-success;
+  }
+  
+  &.pending {
+    background: rgba($color-warning, 0.1);
+    color: $color-warning;
+  }
+  
+  &.rejected {
+    background: rgba($color-error, 0.1);
+    color: $color-error;
+  }
+}
+
+.checkinButton {
+  background: linear-gradient(135deg, $color-success 0%, darken($color-success, 10%) 100%);
+  color: $color-text-white;
+  padding: $spacing-md $spacing-xl;
+  border-radius: $radius-button;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-medium;
+  text-align: center;
+  margin-bottom: $spacing-lg;
+  box-shadow: $shadow-card;
+  
+  &:active {
+    transform: scale(0.98);
+    opacity: 0.9;
+  }
+}
+
+.emptyState {
+  padding: $spacing-xl * 2;
+}

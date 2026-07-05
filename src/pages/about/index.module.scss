@@ -1,0 +1,133 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  background: $color-bg-page;
+  padding: $page-padding;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: $spacing-xl * 2;
+  background: linear-gradient(135deg, $color-primary 0%, $color-primary-light 100%);
+  border-radius: $radius-md;
+  margin-bottom: $spacing-md;
+}
+
+.logo {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: $spacing-md;
+}
+
+.logoIcon {
+  font-size: 48rpx;
+}
+
+.appName {
+  font-size: $font-size-xxl;
+  font-weight: $font-weight-bold;
+  color: $color-text-white;
+  margin-bottom: $spacing-xs;
+}
+
+.appVersion {
+  font-size: $font-size-sm;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: $spacing-sm;
+}
+
+.appDesc {
+  font-size: $font-size-sm;
+  color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  line-height: 1.5;
+}
+
+.card {
+  background: $color-bg-card;
+  border-radius: $radius-md;
+  padding: $spacing-lg;
+  margin-bottom: $spacing-md;
+  box-shadow: $shadow-card;
+}
+
+.cardTitle {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  margin-bottom: $spacing-md;
+}
+
+.featureList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-sm;
+}
+
+.featureItem {
+  padding: $spacing-xs $spacing-sm;
+  background: $color-primary-light;
+  border-radius: $radius-sm;
+  font-size: $font-size-sm;
+  color: $color-primary;
+}
+
+.aboutItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $spacing-md 0;
+  
+  &:not(:last-child) {
+    border-bottom: 1rpx solid $color-border;
+  }
+}
+
+.aboutLabel {
+  font-size: $font-size-md;
+  color: $color-text-secondary;
+}
+
+.aboutValue {
+  font-size: $font-size-md;
+  color: $color-text-primary;
+}
+
+.agreementRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $spacing-md 0;
+  
+  &:not(:last-child) {
+    border-bottom: 1rpx solid $color-border;
+  }
+}
+
+.agreementLabel {
+  font-size: $font-size-md;
+  color: $color-text-primary;
+}
+
+.agreementArrow {
+  font-size: $font-size-xl;
+  color: $color-text-tertiary;
+}
+
+.footer {
+  margin-top: $spacing-xl;
+  text-align: center;
+}
+
+.copyright {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+}

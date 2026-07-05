@@ -1,0 +1,189 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  background: linear-gradient(180deg, $color-primary 0%, $color-primary-light 100%);
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: $spacing-xl;
+}
+
+.logo {
+  width: 160rpx;
+  height: 160rpx;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: $radius-round;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: $spacing-lg;
+  border: 4rpx solid rgba(255, 255, 255, 0.3);
+}
+
+.logoText {
+  font-size: 60rpx;
+  color: $color-text-white;
+}
+
+.title {
+  font-size: $font-size-xxxl;
+  font-weight: $font-weight-bold;
+  color: $color-text-white;
+  margin-bottom: $spacing-sm;
+}
+
+.subtitle {
+  font-size: $font-size-md;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.content {
+  background: $color-bg-card;
+  border-radius: $radius-xl $radius-xl 0 0;
+  padding: $page-padding;
+  padding-top: $spacing-xl;
+}
+
+.loginCard {
+  background: $color-bg-page;
+  border-radius: $radius-md;
+  padding: $spacing-xl;
+  margin-bottom: $spacing-lg;
+}
+
+.loginButton {
+  background: linear-gradient(135deg, $color-primary 0%, $color-primary-light 100%);
+  color: $color-text-white;
+  padding: $spacing-md;
+  border-radius: $radius-button;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  text-align: center;
+  box-shadow: $shadow-card;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-sm;
+  
+  &:active {
+    transform: scale(0.98);
+    opacity: 0.9;
+  }
+}
+
+.wxIcon {
+  font-size: $font-size-xl;
+}
+
+.privacy {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-xs;
+  margin-top: $spacing-md;
+}
+
+.checkbox {
+  width: 32rpx;
+  height: 32rpx;
+  border: 2rpx solid $color-text-tertiary;
+  border-radius: $radius-xs;
+  
+  &.checked {
+    background: $color-primary;
+    border-color: $color-primary;
+    position: relative;
+    
+    &::after {
+      content: '✓';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      color: $color-text-white;
+      font-size: $font-size-xs;
+    }
+  }
+}
+
+.privacyText {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+}
+
+.privacyLink {
+  color: $color-primary;
+}
+
+.agreementModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: flex-end;
+  z-index: 1000;
+}
+
+.modalContent {
+  background: $color-bg-card;
+  width: 100%;
+  border-radius: $radius-xl $radius-xl 0 0;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.modalHeader {
+  padding: $spacing-lg;
+  border-bottom: 1rpx solid $color-divider;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modalTitle {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+}
+
+.modalClose {
+  font-size: $font-size-xl;
+  color: $color-text-tertiary;
+}
+
+.modalBody {
+  padding: $spacing-lg;
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  line-height: 1.8;
+}
+
+.modalFooter {
+  padding: $spacing-lg;
+  border-top: 1rpx solid $color-divider;
+}
+
+.modalButton {
+  background: $color-primary;
+  color: $color-text-white;
+  padding: $spacing-md;
+  border-radius: $radius-button;
+  text-align: center;
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  
+  &:active {
+    opacity: 0.9;
+  }
+}

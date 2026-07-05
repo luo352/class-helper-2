@@ -1,0 +1,120 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  background: $color-bg-page;
+  padding: $page-padding;
+}
+
+.card {
+  background: $color-bg-card;
+  border-radius: $radius-md;
+  padding: $spacing-lg;
+  margin-bottom: $spacing-md;
+  box-shadow: $shadow-card;
+}
+
+.cardTitle {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  margin-bottom: $spacing-md;
+}
+
+.statsGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-md;
+}
+
+.statItem {
+  flex: 1;
+  min-width: 140rpx;
+  padding: $spacing-md;
+  background: $color-bg-page;
+  border-radius: $radius-sm;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-xs;
+}
+
+.statValue {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: $color-primary;
+}
+
+.statLabel {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+}
+
+.dataPreview {
+  max-height: 400rpx;
+  overflow: auto;
+  background: $color-bg-page;
+  border-radius: $radius-sm;
+  padding: $spacing-md;
+}
+
+.previewText {
+  font-size: $font-size-xs;
+  color: $color-text-secondary;
+  font-family: monospace;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: $spacing-md;
+  margin-top: $spacing-lg;
+}
+
+.actionButton {
+  flex: 1;
+  padding: $spacing-md;
+  background: linear-gradient(135deg, $color-primary 0%, $color-primary-light 100%);
+  border-radius: $radius-button;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-xs;
+  color: $color-text-white;
+  font-size: $font-size-md;
+  
+  &.danger {
+    background: linear-gradient(135deg, $color-error 0%, #ff6b6b 100%);
+  }
+  
+  &:active {
+    transform: scale(0.98);
+    opacity: 0.9;
+  }
+}
+
+.buttonIcon {
+  font-size: 32rpx;
+}
+
+.tip {
+  margin-top: $spacing-lg;
+  padding: $spacing-md;
+  background: rgba(255, 125, 0, 0.1);
+  border-radius: $radius-sm;
+  display: flex;
+  gap: $spacing-sm;
+  align-items: flex-start;
+}
+
+.tipIcon {
+  font-size: 24rpx;
+  flex-shrink: 0;
+}
+
+.tipText {
+  font-size: $font-size-xs;
+  color: $color-warning;
+  line-height: 1.6;
+}

@@ -1,0 +1,127 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  background: $color-bg-page;
+  padding: $page-padding;
+}
+
+.card {
+  background: $color-bg-card;
+  border-radius: $radius-md;
+  padding: $spacing-lg;
+  margin-bottom: $spacing-md;
+  box-shadow: $shadow-card;
+}
+
+.cardTitle {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  margin-bottom: $spacing-md;
+}
+
+.privacyItem {
+  padding: $spacing-md 0;
+  
+  &:not(:last-child) {
+    border-bottom: 1rpx solid $color-border;
+  }
+}
+
+.privacyTitle {
+  font-size: $font-size-md;
+  color: $color-text-primary;
+  display: block;
+  margin-bottom: $spacing-xs;
+}
+
+.privacyDesc {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+  line-height: 1.5;
+}
+
+.actionRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $spacing-md 0;
+}
+
+.actionLeft {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+}
+
+.actionIcon {
+  font-size: 32rpx;
+}
+
+.actionInfo {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+}
+
+.actionTitle {
+  font-size: $font-size-md;
+  color: $color-text-primary;
+}
+
+.actionDesc {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+}
+
+.actionArrow {
+  font-size: $font-size-xl;
+  color: $color-text-tertiary;
+}
+
+.permissionList {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+.permissionItem {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+}
+
+.permissionIcon {
+  font-size: 32rpx;
+}
+
+.permissionInfo {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+}
+
+.permissionTitle {
+  font-size: $font-size-md;
+  color: $color-text-primary;
+}
+
+.permissionDesc {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+}
+
+.tip {
+  margin-top: $spacing-xl;
+  padding: $spacing-lg;
+  background: $color-primary-light;
+  border-radius: $radius-md;
+  text-align: center;
+}
+
+.tipText {
+  font-size: $font-size-sm;
+  color: $color-primary;
+  line-height: 1.6;
+}

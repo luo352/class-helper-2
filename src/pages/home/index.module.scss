@@ -1,0 +1,137 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  background: $color-bg-page;
+  padding: $page-padding;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: $spacing-xl;
+  padding-top: $spacing-md;
+}
+
+.greeting {
+  .welcome {
+    font-size: $font-size-sm;
+    color: $color-text-tertiary;
+    margin-bottom: 8rpx;
+    display: block;
+  }
+  
+  .username {
+    font-size: $font-size-xl;
+    font-weight: $font-weight-semibold;
+    color: $color-text-primary;
+    display: block;
+  }
+}
+
+.date {
+  text-align: right;
+  padding: $spacing-sm $spacing-md;
+  background: $color-bg-card;
+  border-radius: $radius-md;
+  box-shadow: $shadow-card;
+  
+  .day {
+    font-size: $font-size-xxl;
+    font-weight: $font-weight-bold;
+    color: $color-primary;
+    line-height: 1.2;
+    display: block;
+  }
+  
+  .weekday {
+    font-size: $font-size-sm;
+    color: $color-text-tertiary;
+    display: block;
+  }
+}
+
+.section {
+  margin-bottom: $spacing-xl;
+}
+
+.sectionTitle {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  margin-bottom: $spacing-md;
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  
+  &::before {
+    content: '';
+    width: 6rpx;
+    height: 32rpx;
+    background: $color-primary;
+    border-radius: $radius-xs;
+  }
+}
+
+.actionCard {
+  margin-bottom: $spacing-lg;
+}
+
+.courseList {
+  .courseCard {
+    margin-bottom: $spacing-md;
+  }
+}
+
+.quickActions {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $spacing-md;
+  background: $color-bg-card;
+  border-radius: $radius-md;
+  padding: $spacing-lg;
+  box-shadow: $shadow-card;
+}
+
+.actionItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: $spacing-sm;
+  border-radius: $radius-md;
+  transition: all $transition-base;
+  
+  &:active {
+    background: $color-bg-hover;
+    transform: scale(0.98);
+  }
+  
+  .icon {
+    width: 88rpx;
+    height: 88rpx;
+    background: linear-gradient(135deg, $color-primary-light 0%, $color-primary 100%);
+    border-radius: $radius-lg;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: $shadow-card;
+    transition: all $transition-base;
+    
+    &:active {
+      transform: scale(0.92);
+    }
+  }
+  
+  .iconText {
+    font-size: $font-size-xl;
+    color: $color-text-white;
+  }
+  
+  .label {
+    font-size: $font-size-xs;
+    color: $color-text-secondary;
+    font-weight: $font-weight-medium;
+  }
+}

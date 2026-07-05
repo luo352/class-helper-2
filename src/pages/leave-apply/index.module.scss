@@ -1,0 +1,135 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  background: $color-bg-page;
+  padding-bottom: 120rpx;
+}
+
+.content {
+  padding: $page-padding;
+}
+
+.card {
+  background: $color-bg-card;
+  border-radius: $radius-md;
+  padding: $spacing-lg;
+  margin-bottom: $spacing-md;
+  box-shadow: $shadow-card;
+}
+
+.cardTitle {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  margin-bottom: $spacing-lg;
+}
+
+.formItem {
+  margin-bottom: $spacing-lg;
+}
+
+.formLabel {
+  font-size: $font-size-md;
+  color: $color-text-primary;
+  font-weight: $font-weight-medium;
+  margin-bottom: $spacing-sm;
+  display: block;
+}
+
+.formInput {
+  width: 100%;
+  padding: $spacing-md;
+  background: $color-bg-page;
+  border-radius: $radius-sm;
+  font-size: $font-size-md;
+  color: $color-text-primary;
+  box-sizing: border-box;
+  
+  &::placeholder {
+    color: $color-text-disabled;
+  }
+}
+
+.formTextarea {
+  width: 100%;
+  padding: $spacing-md;
+  background: $color-bg-page;
+  border-radius: $radius-sm;
+  font-size: $font-size-md;
+  color: $color-text-primary;
+  min-height: 200rpx;
+  box-sizing: border-box;
+  
+  &::placeholder {
+    color: $color-text-disabled;
+  }
+}
+
+.pickerRow {
+  display: flex;
+  gap: $spacing-sm;
+}
+
+.pickerItem {
+  flex: 1;
+  padding: $spacing-md;
+  background: $color-bg-page;
+  border-radius: $radius-sm;
+  font-size: $font-size-md;
+  color: $color-text-primary;
+  text-align: center;
+}
+
+.reasonOptions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-sm;
+}
+
+.reasonTag {
+  padding: 12rpx 24rpx;
+  background: $color-bg-page;
+  border-radius: $radius-button;
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  border: 2rpx solid transparent;
+  transition: all $transition-base;
+  
+  &.selected {
+    background: rgba($color-primary, 0.1);
+    color: $color-primary;
+    border-color: $color-primary;
+  }
+  
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.submitButton {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: $page-padding;
+  padding-bottom: calc($page-padding + env(safe-area-inset-bottom));
+  background: $color-bg-card;
+  border-top: 1rpx solid $color-divider;
+  
+  .btn {
+    background: linear-gradient(135deg, $color-primary 0%, $color-primary-light 100%);
+    color: $color-text-white;
+    padding: $spacing-md;
+    border-radius: $radius-button;
+    font-size: $font-size-lg;
+    font-weight: $font-weight-medium;
+    text-align: center;
+    box-shadow: $shadow-card;
+    
+    &:active {
+      transform: scale(0.98);
+      opacity: 0.9;
+    }
+  }
+}
